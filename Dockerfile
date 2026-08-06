@@ -1,6 +1,5 @@
 # clean base image containing only comfyui, comfy-cli and comfyui-manager
-FROM runpod/worker-comfyui:5.8.4-base
-
+FROM runpod/worker-comfyui:5.8.5-base
 # install custom nodes into comfyui
 RUN git clone https://github.com/kijai/ComfyUI-WanVideoWrapper /comfyui/custom_nodes/ComfyUI-WanVideoWrapper && cd /comfyui/custom_nodes/ComfyUI-WanVideoWrapper && (git checkout ff779c91714d8ee3484cd4119b082c72a1734b72 2>/dev/null || (git fetch origin ff779c91714d8ee3484cd4119b082c72a1734b72 --depth=1 && git checkout ff779c91714d8ee3484cd4119b082c72a1734b72) || echo "WARN: commit unreachable, falling back to default branch HEAD")
 RUN git clone https://github.com/kijai/ComfyUI-KJNodes /comfyui/custom_nodes/ComfyUI-KJNodes && cd /comfyui/custom_nodes/ComfyUI-KJNodes && (git checkout 6dfd2c2420260dbb321a3412b9f1dff439a0f2e3 2>/dev/null || (git fetch origin 6dfd2c2420260dbb321a3412b9f1dff439a0f2e3 --depth=1 && git checkout 6dfd2c2420260dbb321a3412b9f1dff439a0f2e3) || echo "WARN: commit unreachable, falling back to default branch HEAD")
